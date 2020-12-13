@@ -12,7 +12,8 @@ namespace TechJobsPersistent.ViewModels
     {
         [Required(ErrorMessage ="Job name is required")]
         public string Name { get; set; }
-        [Required(ErrorMessage ="Employer Id is required")]
+
+        [Required(ErrorMessage ="Employer is required")]
         public int EmployerId { get; set; }
 
         public List<SelectListItem> EmployerList { get; set; }
