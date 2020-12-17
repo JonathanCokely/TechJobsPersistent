@@ -33,11 +33,12 @@ namespace TechJobsPersistent.Controllers
         public IActionResult AddJob()
         {
             List<Employer> employers = context.Employers.ToList();
-            employers.Insert(0, new Employer { Name = "--Select Employer--", Id = 00 });
+            //employers.Insert(0, new Employer { Name = "--Select Employer--", Id = 00 });
             AddJobViewModel addJobViewModel = new AddJobViewModel(employers);
             return View(addJobViewModel);
         }
 
+        [HttpPost]
         public IActionResult ProcessAddJobForm(AddJobViewModel addJobViewModel)
         {
             if(ModelState.IsValid)
@@ -53,7 +54,7 @@ namespace TechJobsPersistent.Controllers
 
                 return Redirect("/Home");
             }
-            return Redirect("/Home");
+            return View("AddJob", addJobViewModel);
         }
 
         public IActionResult Detail(int id)
