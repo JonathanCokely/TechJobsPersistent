@@ -42,6 +42,7 @@ namespace TechJobsPersistent.Controllers
         [HttpPost]
         public IActionResult ProcessAddJobForm(AddJobViewModel addJobViewModel, string[] selectedSkills)
         {
+            
             if(ModelState.IsValid)
             {
                 Job theJob = new Job
@@ -49,6 +50,13 @@ namespace TechJobsPersistent.Controllers
                     Name = addJobViewModel.Name,
                     EmployerId = addJobViewModel.EmployerId
                 };
+
+                foreach (string skill in selectedSkills)
+                {
+                    Skill theSkill = context.Skills.ToList().Find(x=>x.Name==skill);
+                    JobSkill theJobSkill = new JobSkill() { JobId = theJob.Id, Job = theJob, SkillId = theSkill.Id, Skill = theSkill };
+                    context.JobSkills.Add(theJobSkill);
+                }
 
                 context.Jobs.Add(theJob);
                 context.SaveChanges();
