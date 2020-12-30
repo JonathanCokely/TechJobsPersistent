@@ -15,7 +15,7 @@ namespace TechJobsPersistent.Controllers
 {
     public class HomeController : Controller
     {
-        private JobDbContext context;
+        private readonly JobDbContext context;
 
         public HomeController(JobDbContext dbContext)
         {
@@ -63,7 +63,12 @@ namespace TechJobsPersistent.Controllers
 
                 return Redirect("/Home");
             }
-            return View("AddJob", addJobViewModel);
+
+            List<Employer> employers = context.Employers.ToList();
+            List<Skill> skills = context.Skills.ToList();
+            AddJobViewModel addNewViewModel = new AddJobViewModel(employers, skills);
+
+            return View("AddJob", addNewViewModel);
         }
 
         public IActionResult Detail(int id)

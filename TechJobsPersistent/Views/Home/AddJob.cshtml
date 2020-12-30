@@ -4,7 +4,7 @@
 <form asp-controller="Home" asp-action="ProcessAddJobForm" method="post">
     <div class="form-group">
         <label>Name</label>
-        <input class="form-control" asp-for="@Model.Name"/>
+        <input class="form-control" style="max-width: 500px;" asp-for="@Model.Name"/>
         <span asp-validation-for="@Model.Name"></span>
     </div>
 
@@ -22,7 +22,8 @@
                 <input name="selectedSkills" type="checkbox" value="@skill.Name" />
             </span>
         }
-        <span asp-validation-for="@Model.SkillList"></span>
+        &emsp;
+        <span asp-validation-for="@Model.SelectedSkills"></span>
     </div>
 
     <input type="submit" value="Add Job" />

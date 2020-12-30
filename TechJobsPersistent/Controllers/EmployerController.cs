@@ -13,7 +13,7 @@ namespace TechJobsPersistent.Controllers
 {
     public class EmployerController : Controller
     {
-        private JobDbContext context;
+        private readonly JobDbContext context;
 
         public EmployerController(JobDbContext dbContext)
         {
@@ -30,7 +30,7 @@ namespace TechJobsPersistent.Controllers
 
         public IActionResult Add()
         {
-            List<Employer> employers = context.Employers.ToList();
+            //List<Employer> employers = context.Employers.ToList();
             AddEmployerViewModel addEmployerViewModel = new AddEmployerViewModel();
 
             return View(addEmployerViewModel);
