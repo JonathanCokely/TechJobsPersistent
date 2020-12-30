@@ -29,7 +29,7 @@ namespace TechJobsPersistent.Controllers
             return View(jobs);
         }
 
-        [HttpGet("/Add")]
+        //[HttpGet("/Add")]
         public IActionResult AddJob()
         {
             List<Employer> employers = context.Employers.ToList();

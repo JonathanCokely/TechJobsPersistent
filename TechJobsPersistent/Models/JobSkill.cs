@@ -12,5 +12,10 @@ namespace TechJobsPersistent.Models
         public JobSkill()
         {
         }
+
+        public override string ToString()
+        {
+            return Skill.ToString();
+        }
     }
 }
